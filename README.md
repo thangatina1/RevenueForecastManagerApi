@@ -2,4 +2,4 @@
 
 ### Technology
 
-![](src/maim/resources/static/Tech.jpg)
+![](src/main/resources/static/Tech.jpg)
