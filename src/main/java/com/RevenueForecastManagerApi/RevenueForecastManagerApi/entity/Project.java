@@ -41,17 +41,25 @@ public class Project {
     @Column(name="active_status")
     private Boolean activeStatus;
 
+    public Project(){}
 
-    public Project(){
-
+    public Project(int esaProjectId, String esaProjectName, int sowProjectId, String sowProjectName, Boolean fixedBidFlag, Boolean tnmFlag, String projectLocation, String sbu, double rate, int workHours, Boolean activeStatus) {
+        this.esaProjectId = esaProjectId;
+        this.esaProjectName = esaProjectName;
+        this.sowProjectId = sowProjectId;
+        this.sowProjectName = sowProjectName;
+        this.fixedBidFlag = fixedBidFlag;
+        this.tnmFlag = tnmFlag;
+        this.projectLocation = projectLocation;
+        this.sbu = sbu;
+        this.rate = rate;
+        this.workHours = workHours;
+        this.activeStatus = activeStatus;
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
+    public int getProject_id() {
+        return esaProjectId;
     }
-
-
 
     public int getEsaProjectId() {
         return esaProjectId;

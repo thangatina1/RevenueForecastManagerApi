@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,29 +18,39 @@ public class ProjectServiceImpl implements ProjectService{
     @Autowired
     private ProjectDAO projectDAO;
 
-
     @Override
-    @Transactional
-    public List<Project> getProjects() {
-        return projectDAO.getProjects();
+    public List<Project> retrieveAllProjects() {
+        List<Project> list = new ArrayList<>();
+        Iterable<Project> iterable = projectDAO.findAll();
+        for (Project project : iterable) {
+            list.add(new Project(project.getEsaProjectId(),project.getEsaProjectName(),project.getSowProjectId(),project.getSowProjectName(),project.getFixedBidFlag(),
+                    project.getTnmFlag(),project.getProjectLocation(),project.getSbu(),project.getRate(),project.getWorkHours(),project.getActiveStatus()));
+        }
+        return list;
     }
 
     @Override
-    @Transactional
-    public void saveCustomer(Project project) {
-        projectDAO.saveProject(project);
-
+    public Project retrieveProjectById(int id) {
+        return null;
     }
 
     @Override
-    @Transactional
-    public Project getProject(int theId) {
-        return projectDAO.getProject(theId);
+    public Project createProject(Project project) {
+
+
+        projectDAO.save(new Project(project.getEsaProjectId(),project.getEsaProjectName(),project.getSowProjectId(),project.getSowProjectName(),project.getFixedBidFlag(),
+                project.getTnmFlag(),project.getProjectLocation(),project.getSbu(),project.getRate(),project.getWorkHours(),project.getActiveStatus()));
+
+            return project;
     }
 
     @Override
-    @Transactional
-    public void deleteProject(int theId) {
-        projectDAO.deleteProject(theId);
+    public Project editProject(Project project) {
+        return null;
+    }
+
+    @Override
+    public void deleteProject(int id) {
+
     }
 }

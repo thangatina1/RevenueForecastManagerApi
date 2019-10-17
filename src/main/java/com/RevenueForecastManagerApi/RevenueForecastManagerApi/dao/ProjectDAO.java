@@ -1,16 +1,11 @@
 package com.RevenueForecastManagerApi.RevenueForecastManagerApi.dao;
 
 import com.RevenueForecastManagerApi.RevenueForecastManagerApi.entity.Project;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ProjectDAO {
+public interface ProjectDAO extends CrudRepository<Project, Integer> {
 
-    public List<Project> getProjects();
 
-    public void saveProject(Project project);
-
-    public Project getProject(int theId);
-
-    public void deleteProject(int theId);
 }
